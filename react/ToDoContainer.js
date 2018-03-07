@@ -1,20 +1,34 @@
 import React from 'react';
 import {
+  KeyboardAvoidingView,
   View,
   Text,
   TextInput,
-  Button
+  FlatList,
+  Dimensions
 } from 'react-native';
 
-class ToDoContainer extends React.Component {
-  render() {
-    return (
-    <View>
-      <Text> HUHUBELLS </Text>
-      <TextInput style={{backgroundColor: '#ededed', height: 60 }} editable={true} maxLength={40}/>
-    </View>
-    )
-  }
+const ToDoContainer = ({handleTextChange, handleSubmit, text, tasks}) => {
+  width = Dimensions.get('window').width - 100
+  return (
+    <KeyboardAvoidingView behavior="padding">
+      <FlatList
+        data={tasks}
+        renderItem={({item}) => <Text>{item.text}</Text>}
+      />
+      <TextInput
+        style={{backgroundColor: '#ededed', height: 30 , width: width}}
+        editable={true}
+        onSubmitEditing={handleSubmit}
+        onChangeText={handleTextChange}
+        maxLength={40}
+        placeholder="To do mo 'to"
+        returnKeyType="done"
+        returnKeyLabel="Add To Do"
+        value={text}
+      />
+    </KeyboardAvoidingView>
+  )
 }
 
 export default ToDoContainer

@@ -14,7 +14,7 @@ const ToDoContainer = ({handleTextChange, handleSubmit, text, tasks}) => {
     <KeyboardAvoidingView behavior="padding">
       <FlatList
         data={tasks}
-        renderItem={({item}) => <Text>{item.text}</Text>}
+        renderItem={({item}) => <Text> &#9654; {item.text}</Text>}
       />
       <TextInput
         style={{backgroundColor: '#ededed', height: 30 , width: width}}
